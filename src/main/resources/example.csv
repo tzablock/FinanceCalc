@@ -1,0 +1,5 @@
+rev,revCosts,incBefTax,effectiveTaxRate,tax,netInc,businessType
+1000,"[20,50,60]",,0.2,,,"wc"
+1024,"[200,50,60]",,0.3,,,"wc"
+1022,"[20,50,60]",,0.4,,,"wc"
+500,"[200,50,60]",,0.5,,,"wc"
