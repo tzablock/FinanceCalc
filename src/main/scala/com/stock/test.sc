@@ -1,9 +1,12 @@
-case class A(a: Int)
-object A {
-  def apply(a: String): A = {
-    print(a)
-    A(2)
+import scala.annotation.tailrec
+
+@tailrec
+val calculateCompoundIncome = (initAmt: Double, period: Int, interestRate: Double) => {
+  if (period == 0){
+    initAmt + interestRate*initAmt
+  } else {
+    calculateCompoundIncome(initAmt + interestRate*initAmt,period-1,interestRate)
   }
 }
 
-A("sss")
+calculateCompoundIncome(100,3,0.5)
