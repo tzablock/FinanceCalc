@@ -37,10 +37,15 @@ class BusinessCalculator(spark: SparkSession) {  //TODO make tests
   final def calculateBusinessRisk(df: DataFrame): DataFrame = {
     df.withColumn("risk",calculateRisk($"businessMarketPrice",$"equity"))
   }
+
   @tailrec
   final def calculateCompoundIncomeForYears(df: DataFrame,yearsNum: Int): DataFrame = {
     if (yearsNum>0){
-      calculateCompoundIncomeForYears(df.withColumn(yearsNum + " yearCompVal",calculateCompoundIncome(lit(1000.0),lit(yearsNum),$"estimatedValueIncrease")),yearsNum-1)
+      calculateCompoundIncomeForYears(
+        df.withColumn(
+          yearsNum + " yearCompVal",
+          calculateCompoundIncome(lit(1000.0),yearsNum,$"estimatedValueIncrease")),
+        yearsNum-1)
     } else {
       df
     }

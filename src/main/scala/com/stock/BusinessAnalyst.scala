@@ -42,7 +42,7 @@ class BusinessAnalyst(logger: Logger) {
       logger.info("Start calculating company Flow Statement.")
       //TODO cash flow statement
       logger.info("Start calculating company compound value if invest 1000 chf after 15 years for estimated value increase.")
-      val cvBusinesses = businessCalculator.calculateCompoundIncomeForYears(rBusinesses,15)
+      val cvBusinesses = businessCalculator.calculateCompoundIncomeForYears(rBusinesses,15)  //TODO check
       //TODO marketValue, %  return value increase
       //TODO dividenta
 
@@ -51,7 +51,7 @@ class BusinessAnalyst(logger: Logger) {
       cvBusinesses.show()//TODO presenting data in some nice framework
       //TODO maintain in memory spark context
       //TODO life job running(calculations running)
-
+      //TODO check private, public etc
       0
     } catch {
       case e: Exception => {

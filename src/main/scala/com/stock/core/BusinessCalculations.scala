@@ -63,12 +63,12 @@ object BusinessCalculations { //TODO make tests
     * @return tax
     */
   @tailrec
-  val calculateCompoundIncome: (Column,Column,Column) => Column = (initAmt: Column, period: Column, interestRate: Column) => {
-    if (period == lit(1)){
-      initAmt + interestRate*initAmt
-    } else {
-      calculateCompoundIncome(initAmt + interestRate*initAmt,period-1,interestRate)
-    }
+  val calculateCompoundIncome: (Column,Int,Column) => Column = (initAmt: Column, period: Int, interestRate: Column) => {
+     if (period == 1){
+       initAmt + initAmt*interestRate
+     } else {
+       calculateCompoundIncome(initAmt + initAmt*interestRate,period-1,interestRate)
+     }
   }
 
   val calculateIncomeBeforeTaxUDF = udf(calculateIncomeBeforeTax)
